@@ -1,3 +1,92 @@
+.preloader{
+	width: 100vw;
+	height: 100vh;
+	display: flex;
+	align-items: center;
+	justify-content:center;
+	flex-direction: column;
+	position: fixed;
+	background-color: #000;
+	color: #fff;
+	font-size: 32px;
+	z-index: 9999;
+}
+
+.loader{
+	position: relative;
+}
+
+.loader::before{
+	content: '';
+	position: absolute;
+	top: 0;
+	right: 0;
+	width: 2px;
+	height: 100%;
+	background: #b8b894;
+	animation: textCursor 0.8s steps(3) infinite;
+}
+
+.loader p{
+	position: relative;
+	animation: reveal 2s ease-in-out;
+	overflow: hidden;
+}
+
+.loader p::before{
+	background-color: #000;
+	animation: typingText 1.5s forwards;
+}
+
+.loader p::before, p::after{
+	content: "";
+	position: absolute;
+	top: 0;
+	right: 0;
+	left: 0;
+	bottom: 0;
+}
+
+.confirmation-button{
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 180px;
+	height: 180px;
+	margin-top: 60px;
+	border-radius: 50%;
+	text-decoration: none;
+	font-size: 40px;
+	font-weight: bold;
+	background-color: #000066;
+	border: 4px solid #00004d;
+	color: #b8b894;
+	text-transform: uppercase;
+}
+
+.confirmation-button:active{
+	background-color: #1a1aff;
+	border: 4px solid #0000e6;
+	color: #fff;
+}
+
+.confirmation-button:hover{
+	background-color: #0000ff;
+	border: 4px solid #000080;
+	color: #ccccb3;
+}
+
+.inactive{
+	pointer-events: none;
+	background-color: #00000c;
+	border: 4px solid #00001a;
+	color: #4d4d33;
+}
+
+.disappear{
+	display: none;
+}
+
 h1 {
     font-size: 60px;
     text-align: center;
@@ -51,4 +140,19 @@ button {
 
 .ground-hole.appear .mole {
   	top: -15px;
+}
+
+@keyframes textCursor{
+	0%, 75%{
+		opacity: 1;
+	}
+	76%, 100%{
+		opacity: 0;
+	}
+}
+
+@keyframes typingText{
+	to{
+		left: 100%;
+	}
 }

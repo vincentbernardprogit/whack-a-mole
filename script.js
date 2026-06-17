@@ -1,9 +1,23 @@
+const preloader = document.querySelector(".preloader")
+const confirmationButton = document.querySelector(".confirmation-button")
 const groundHoles = document.querySelectorAll('.ground-hole')
 const moles = document.querySelectorAll('.mole')
 const highScore = document.querySelector('.high-score')
 const pop = document.querySelector('#pop')
 
 let previousGroundHole, gameOver, score
+
+function setConfirmationButtonActive(){
+	setTimeout(() => {
+		confirmationButton.classList.remove("inactive")
+	}, 3000)
+}
+
+addEventListener("load", setConfirmationButtonActive)
+
+function clickConfirmationButton(){
+	preloader.classList.add("disappear")
+}
 
 function start() {
 	gameOver = false
