@@ -1,3 +1,11 @@
+*{
+	margin: 0;
+}
+
+body{
+	position: fixed;
+}
+
 .preloader{
 	width: 100vw;
 	height: 100vh;
@@ -87,6 +95,11 @@
 	display: none;
 }
 
+.container {
+	width: 100vw;
+	height: 100vh;
+}
+
 h1 {
     font-size: 60px;
     text-align: center;
@@ -99,13 +112,13 @@ button {
     margin: auto;
 }
 
-.container {
+.main {
     width: 600px;
     margin: auto;
     cursor: url(images/hammer_2.png), auto;
 }
 
-.container:active {
+.main:active {
     cursor: url(images/hammer_3.png), auto;
 }
 
