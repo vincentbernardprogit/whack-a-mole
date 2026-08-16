@@ -42,7 +42,8 @@ function summonMole() {
 }
 
 function hitMole() {
-	score++
+	if (this.parentNode.className == "ground-hole") score += 0
+	else score++
 	pop.play()
 	this.parentNode.classList.remove('appear')
 	highScore.textContent = score
