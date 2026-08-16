@@ -49,6 +49,16 @@ button {
 	transition: top 0.3s;
 }
 
-.ground-hole.appear .mole {
+.snake{
+	width: 100%;
+	height: 100%;
+	background: url(images/snake.png) bottom center no-repeat;
+	background-size: 60%;
+	position: absolute;
+	top: 120px;
+	transition: top 0.3s;
+}
+
+.ground-hole.mole-appear .mole, .ground-hole.snake-appear .snake {
   	top: -15px;
 }

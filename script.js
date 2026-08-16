@@ -1,7 +1,8 @@
-const groundHoles = document.querySelectorAll('.ground-hole')
-const moles = document.querySelectorAll('.mole')
-const highScore = document.querySelector('.high-score')
-const pop = document.querySelector('#pop')
+const groundHoles = document.querySelectorAll(".ground-hole")
+const moles = document.querySelectorAll(".mole")
+const snakes = document.querySelectorAll(".snake")
+const highScore = document.querySelector(".high-score")
+const pop = document.querySelector("#pop")
 
 let previousGroundHole, gameOver, score
 
@@ -31,23 +32,34 @@ function setMoleAppearanceDuration(min, max) {
 function summonMole() {
 	const currentGroundHole = selectGroundHole(groundHoles)
 	const currentMoleAppearanceDuration = setMoleAppearanceDuration(1000, 5000)
-	currentGroundHole.classList.add('appear')
+
+	const appearIndex = Math.floor(Math.random() * 2)
+	let appear
+	if (appearIndex == 0) appear = "mole-appear"
+	if (appearIndex == 1) appear = "snake-appear"
+	currentGroundHole.classList.add(appear)
 
 	setTimeout(() => {
-		currentGroundHole.classList.remove('appear')
-		if (!gameOver) {
-			summonMole()
-		}
+		currentGroundHole.classList.remove(appear)
+		if (!gameOver) summonMole()
 	}, currentMoleAppearanceDuration)
 }
 
 function hitMole() {
 	score++
 	pop.play()
-	this.parentNode.classList.remove('appear')
+	this.parentNode.classList.remove("mole-appear")
 	highScore.textContent = score
 }
 
-moles.forEach(mole => {
-  	mole.addEventListener('click', hitMole)
-})
+function hitSnake() {
+	score--
+	pop.play()
+	this.parentNode.classList.remove("snake-appear")
+	if (score <= 0) highScore.textContent = 0
+	else highScore.textContent = score
+}
+
+moles.forEach(mole => {mole.addEventListener("click", hitMole)})
+
+snakes.forEach(snake => {snake.addEventListener("click", hitSnake)})
