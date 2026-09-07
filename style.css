@@ -1,3 +1,9 @@
+body {
+	background-image: url("images/ground_background_1.png");
+	background-size: cover;
+	background-position: center;
+}
+
 h1 {
     font-size: 60px;
     text-align: center;
