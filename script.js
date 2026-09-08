@@ -3,10 +3,11 @@ const confirmationButton = document.querySelector(".confirmation-button")
 const groundHoles = document.querySelectorAll('.ground-hole')
 const moles = document.querySelectorAll('.mole')
 const coneheadMoles = document.querySelectorAll(".conehead-mole")
+const bucketheadMoles = document.querySelectorAll(".buckethead-mole")
 const highScore = document.querySelector('.high-score')
 const pop = document.querySelector('#pop')
 
-let previousGroundHole, gameOver, score, moleHitCount = 0
+let previousGroundHole, gameOver, score, coneheadMoleHitCount = 0, bucketheadMoleHitCount = 0
 
 function setConfirmationButtonActive(){
 	setTimeout(() => {
@@ -46,11 +47,12 @@ function setMoleAppearanceDuration(min, max) {
 function summonMole() {
 	const currentGroundHole = selectGroundHole(groundHoles)
 	const currentMoleAppearanceDuration = setMoleAppearanceDuration(1000, 5000)
-	
-	const appearIndex = Math.floor(Math.random() * 2)
+
+	const appearIndex = Math.floor(Math.random() * 3)
 	let appear
 	if(appearIndex == 0) appear = "mole-appear"
 	if(appearIndex == 1) appear = "conehead-mole-appear"
+  if(appearIndex == 2) appear = "buckethead-mole-appear"
 	currentGroundHole.classList.add(appear)
 
 	setTimeout(() => {
@@ -68,22 +70,47 @@ function hitMole() {
 }
 
 function hitConeheadMole() {
-	moleHitCount++
-	if(moleHitCount == 1){
+	coneheadMoleHitCount++
+	if(coneheadMoleHitCount == 1){
 		pop.play()
 		this.style.backgroundImage = "url(images/mole.png)"
 		this.style.backgroundSize = "60%"
 		this.style.backgroundRepeat = "no-repeat"
 	}
-	else if(moleHitCount == 2){
+  else if(coneheadMoleHitCount == 2){
 		score++
 		pop.play()
 		this.parentNode.classList.remove("conehead-mole-appear")
 		highScore.textContent = score
-		moleHitCount = 0
+		coneheadMoleHitCount = 0
+	}
+}
+  
+function hitBucketheadMole() {
+	bucketheadMoleHitCount++
+	if(bucketheadMoleHitCount == 1) {
+		pop.play()
+		this.style.backgroundImage = "url(images/buckethead_mole_hit.png)"
+		this.style.backgroundSize = "50%"
+		this.style.backgroundRepeat = "no-repeat"
+	}
+	else if(bucketheadMoleHitCount == 2) {
+		pop.play()
+		this.style.backgroundImage = "url(images/mole.png)"
+		this.style.backgroundSize = "60%"
+		this.style.backgroundRepeat = "no-repeat"
+	}
+	else if(bucketheadMoleHitCount == 3) {
+		score++
+		pop.play()
+		this.parentNode.classList.remove("buckethead-mole-appear")
+		highScore.textContent = score
+		bucketheadMoleHitCount = 0
 	}
 }
 
 moles.forEach(mole => {mole.addEventListener("click", hitMole)})
 
 coneheadMoles.forEach(coneheadMole => {coneheadMole.addEventListener("click", hitConeheadMole)})
+
+bucketheadMoles.forEach(bucketheadMole => {bucketheadMole.addEventListener("click", hitBucketheadMole)})
