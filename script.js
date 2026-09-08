@@ -1,10 +1,24 @@
-const groundHoles = document.querySelectorAll(".ground-hole")
-const moles = document.querySelectorAll(".mole")
+const preloader = document.querySelector(".preloader")
+const confirmationButton = document.querySelector(".confirmation-button")
+const groundHoles = document.querySelectorAll('.ground-hole')
+const moles = document.querySelectorAll('.mole')
 const coneheadMoles = document.querySelectorAll(".conehead-mole")
-const highScore = document.querySelector(".high-score")
-const pop = document.querySelector("#pop")
+const highScore = document.querySelector('.high-score')
+const pop = document.querySelector('#pop')
 
 let previousGroundHole, gameOver, score, moleHitCount = 0
+
+function setConfirmationButtonActive(){
+	setTimeout(() => {
+		confirmationButton.classList.remove("inactive")
+	}, 3000)
+}
+
+addEventListener("load", setConfirmationButtonActive)
+
+function clickConfirmationButton(){
+	preloader.classList.add("disappear")
+}
 
 function start() {
 	gameOver = false
@@ -46,7 +60,8 @@ function summonMole() {
 }
 
 function hitMole() {
-	score++
+	if (this.parentNode.className == "ground-hole") score += 0
+	else score++
 	pop.play()
 	this.parentNode.classList.remove("mole-appear")
 	highScore.textContent = score
