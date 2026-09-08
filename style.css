@@ -155,7 +155,17 @@ button {
 	transition: top 0.3s;
 }
 
-.ground-hole.appear .mole {
+.conehead-mole{
+	width: 100%;
+	height: 100%;
+	background: url(images/conehead_mole.png) bottom center no-repeat;
+	background-size: 50%;
+	position: absolute;
+	top: 145px;
+	transition: top 0.3s;
+}
+
+.ground-hole.mole-appear .mole, .ground-hole.conehead-mole-appear .conehead-mole {
   	top: -15px;
 }
 
