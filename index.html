@@ -9,39 +9,60 @@
 		<title>Whack a Mole</title>
 	</head>
 	<body>
-		<h1>Whack a Mole</h1>
-
-		<button type="button" onclick="start()">Start!</button>
-		
-		<h1 class="high-score">0</h1>
-		
-		<div class="container">
-			<div class="ground-hole">
-				<div class="mole"></div>
-				<div class="snake"></div>
+		<div class="preloader">
+			<div class="loader">
+				<p>For the best gaming experience, play this game in fullscreen mode on your laptop or PC...</p>
 			</div>
-			<div class="ground-hole">
-				<div class="mole"></div>
-				<div class="snake"></div>
-			</div>
-			<div class="ground-hole">
-				<div class="mole"></div>
-				<div class="snake"></div>
-			</div>
-			<div class="ground-hole">
-				<div class="mole"></div>
-				<div class="snake"></div>
-			</div>
-			<div class="ground-hole">
-				<div class="mole"></div>
-				<div class="snake"></div>
-			</div>
-			<div class="ground-hole">
-				<div class="mole"></div>
-				<div class="snake"></div>
-			</div>
+			<a href="#" class="confirmation-button inactive" onclick="clickConfirmationButton()">ok</a>
 		</div>
 
+		<div class="container">
+			<h1>Whack a Mole</h1>
+
+			<button type="button" onclick="start()">Start!</button>
+			
+			<h1 class="high-score">0</h1>
+			
+			<div class="main">
+				<div class="ground-hole">
+          <div class="mole"></div>
+          <div class="conehead-mole"></div>
+          <div class="buckethead-mole"></div>
+          <div class="snake"></div>
+        </div>
+        <div class="ground-hole">
+          <div class="mole"></div>
+          <div class="conehead-mole"></div>
+          <div class="buckethead-mole"></div>
+          <div class="snake"></div>
+        </div>
+        <div class="ground-hole">
+          <div class="mole"></div>
+          <div class="conehead-mole"></div>
+          <div class="buckethead-mole"></div>
+          <div class="snake"></div>
+        </div>
+        <div class="ground-hole">
+          <div class="mole"></div>
+          <div class="conehead-mole"></div>
+          <div class="buckethead-mole"></div>
+          <div class="snake"></div>
+        </div>
+        <div class="ground-hole">
+          <div class="mole"></div>
+          <div class="conehead-mole"></div>
+          <div class="buckethead-mole"></div>
+          <div class="snake"></div>
+        </div>
+        <div class="ground-hole">
+          <div class="mole"></div>
+          <div class="conehead-mole"></div>
+          <div class="buckethead-mole"></div>
+          <div class="snake"></div>
+        </div>
+			</div>
+		</div>
+		
 		<audio src="sound_effects/pop.mp3" id="pop"></audio>
 		
 		<script src="script.js"></script>
