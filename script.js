@@ -4,6 +4,7 @@ const groundHoles = document.querySelectorAll('.ground-hole')
 const moles = document.querySelectorAll('.mole')
 const coneheadMoles = document.querySelectorAll(".conehead-mole")
 const bucketheadMoles = document.querySelectorAll(".buckethead-mole")
+const snakes = document.querySelectorAll(".snake")
 const highScore = document.querySelector('.high-score')
 const pop = document.querySelector('#pop')
 
@@ -48,11 +49,12 @@ function summonMole() {
 	const currentGroundHole = selectGroundHole(groundHoles)
 	const currentMoleAppearanceDuration = setMoleAppearanceDuration(1000, 5000)
 
-	const appearIndex = Math.floor(Math.random() * 3)
+	const appearIndex = Math.floor(Math.random() * 4)
 	let appear
 	if(appearIndex == 0) appear = "mole-appear"
 	if(appearIndex == 1) appear = "conehead-mole-appear"
   if(appearIndex == 2) appear = "buckethead-mole-appear"
+  if (appearIndex == 3) appear = "snake-appear"
 	currentGroundHole.classList.add(appear)
 
 	setTimeout(() => {
@@ -108,9 +110,19 @@ function hitBucketheadMole() {
 		bucketheadMoleHitCount = 0
 	}
 }
+  
+function hitSnake() {
+	score--
+	pop.play()
+	this.parentNode.classList.remove("snake-appear")
+	if (score <= 0) highScore.textContent = 0
+	else highScore.textContent = score
+}
 
 moles.forEach(mole => {mole.addEventListener("click", hitMole)})
 
 coneheadMoles.forEach(coneheadMole => {coneheadMole.addEventListener("click", hitConeheadMole)})
 
 bucketheadMoles.forEach(bucketheadMole => {bucketheadMole.addEventListener("click", hitBucketheadMole)})
+
+snakes.forEach(snake => {snake.addEventListener("click", hitSnake)})
