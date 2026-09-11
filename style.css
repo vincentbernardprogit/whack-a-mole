@@ -1,20 +1,20 @@
-*{
+* {
 	margin: 0;
 }
 
-body{
+body {
 	position: fixed;
-  	background-image: url("images/ground_background_1.png");
+	background-image: url("images/ground_background_1.png");
 	background-size: cover;
 	text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.25);
 }
 
-.preloader{
+.preloader {
 	width: 100vw;
 	height: 100vh;
 	display: flex;
 	align-items: center;
-	justify-content:center;
+	justify-content: center;
 	flex-direction: column;
 	position: fixed;
 	background-color: #000;
@@ -23,12 +23,12 @@ body{
 	z-index: 9999;
 }
 
-.loader{
+.loader {
 	position: relative;
 }
 
-.loader::before{
-	content: '';
+.loader::before {
+	content: "";
 	position: absolute;
 	top: 0;
 	right: 0;
@@ -38,18 +38,18 @@ body{
 	animation: textCursor 0.8s steps(3) infinite;
 }
 
-.loader p{
+.loader p {
 	position: relative;
 	animation: reveal 2s ease-in-out;
 	overflow: hidden;
 }
 
-.loader p::before{
+.loader p::before {
 	background-color: #000;
 	animation: typingText 1.5s forwards;
 }
 
-.loader p::before, p::after{
+.loader p::before, p::after {
 	content: "";
 	position: absolute;
 	top: 0;
@@ -58,7 +58,7 @@ body{
 	bottom: 0;
 }
 
-.confirmation-button{
+.confirmation-button {
 	display: flex;
 	align-items: center;
 	justify-content: center;
@@ -75,26 +75,26 @@ body{
 	text-transform: uppercase;
 }
 
-.confirmation-button:active{
-	background-color: #1a1aff;
-	border: 4px solid #0000e6;
-	color: #fff;
-}
-
-.confirmation-button:hover{
+.confirmation-button:hover {
 	background-color: #0000ff;
 	border: 4px solid #000080;
 	color: #ccccb3;
 }
 
-.inactive{
+.confirmation-button:active {
+	background-color: #1a1aff;
+	border: 4px solid #0000e6;
+	color: #fff;
+}
+
+.inactive {
 	pointer-events: none;
 	background-color: #00000c;
 	border: 4px solid #00001a;
 	color: #4d4d33;
 }
 
-.disappear{
+.disappear {
 	display: none;
 }
 
@@ -104,38 +104,38 @@ body{
 }
 
 h1 {
-    font-size: 60px;
-    text-align: center;
-    font-family: arial;
-    margin: 10px;
+	font-size: 60px;
+	text-align: center;
+	font-family: arial;
+	margin: 10px;
 }
 
 button {
-    display: block;
-    margin: auto;
+	display: block;
+	margin: auto;
 	box-shadow: 5px 5px 15px 0px rgba(0, 0, 0, 0.40);
 }
 
 .main {
-    width: 600px;
-    margin: auto;
-    cursor: url(images/hammer_2.png), auto;
+	width: 600px;
+	margin: auto;
+	cursor: url(images/hammer_2.png), auto;
 }
 
 .main:active {
-    cursor: url(images/hammer_3.png), auto;
+	cursor: url(images/hammer_3.png), auto;
 }
 
 .ground-hole {
-    width: 200px;
-    height: 200px;
-    position: relative;
-    overflow: hidden;
-    float: left;
+	width: 200px;
+	height: 200px;
+	position: relative;
+	overflow: hidden;
+	float: left;
 }
 
 .ground-hole::after {
-	content: '';
+	content: "";
 	display: block;
 	width: 200px;
 	height: 100px;
@@ -155,7 +155,7 @@ button {
 	transition: top 0.3s;
 }
 
-.conehead-mole{
+.conehead-mole {
 	width: 100%;
 	height: 100%;
 	background: url(images/conehead_mole.png) bottom center no-repeat;
@@ -175,7 +175,7 @@ button {
 	transition: top 0.3s;
 }
 
-.snake{
+.snake {
 	width: 100%;
 	height: 100%;
 	background: url(images/snake.png) bottom center no-repeat;
@@ -186,20 +186,20 @@ button {
 }
   
 .ground-hole.mole-appear .mole, .ground-hole.conehead-mole-appear .conehead-mole, .ground-hole.buckethead-mole-appear .buckethead-mole, .ground-hole.snake-appear .snake {
-  	top: -15px;
+	top: -15px;
 }
 
-@keyframes textCursor{
-	0%, 75%{
+@keyframes textCursor {
+	0%, 75% {
 		opacity: 1;
 	}
-	76%, 100%{
+	76%, 100% {
 		opacity: 0;
 	}
 }
 
-@keyframes typingText{
-	to{
+@keyframes typingText {
+	to {
 		left: 100%;
 	}
 }

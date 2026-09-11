@@ -1,16 +1,16 @@
 const preloader = document.querySelector(".preloader")
 const confirmationButton = document.querySelector(".confirmation-button")
-const groundHoles = document.querySelectorAll('.ground-hole')
-const moles = document.querySelectorAll('.mole')
+const groundHoles = document.querySelectorAll(".ground-hole")
+const moles = document.querySelectorAll(".mole")
 const coneheadMoles = document.querySelectorAll(".conehead-mole")
 const bucketheadMoles = document.querySelectorAll(".buckethead-mole")
 const snakes = document.querySelectorAll(".snake")
-const highScore = document.querySelector('.high-score')
-const pop = document.querySelector('#pop')
+const highScore = document.querySelector(".high-score")
+const pop = document.querySelector("#pop")
 
 let previousGroundHole, gameOver, score, coneheadMoleHitCount = 0, bucketheadMoleHitCount = 0
 
-function setConfirmationButtonActive(){
+function setConfirmationButtonActive() {
 	setTimeout(() => {
 		confirmationButton.classList.remove("inactive")
 	}, 3000)
@@ -18,7 +18,7 @@ function setConfirmationButtonActive(){
 
 addEventListener("load", setConfirmationButtonActive)
 
-function clickConfirmationButton(){
+function clickConfirmationButton() {
 	preloader.classList.add("disappear")
 }
 
@@ -42,7 +42,7 @@ function selectGroundHole(groundHoles) {
 }
 
 function setMoleAppearanceDuration(min, max) {
-  	return Math.round(Math.random() * (max - min) + min)
+	return Math.round(Math.random() * (max - min) + min)
 }
 
 function summonMole() {
@@ -51,10 +51,10 @@ function summonMole() {
 
 	const appearIndex = Math.floor(Math.random() * 4)
 	let appear
-	if(appearIndex == 0) appear = "mole-appear"
-	if(appearIndex == 1) appear = "conehead-mole-appear"
-  if(appearIndex == 2) appear = "buckethead-mole-appear"
-  if (appearIndex == 3) appear = "snake-appear"
+	if (appearIndex == 0) appear = "mole-appear"
+	if (appearIndex == 1) appear = "conehead-mole-appear"
+	if (appearIndex == 2) appear = "buckethead-mole-appear"
+	if (appearIndex == 3) appear = "snake-appear"
 	currentGroundHole.classList.add(appear)
 
 	setTimeout(() => {
@@ -77,13 +77,13 @@ function hitConeheadMole() {
 	if (this.parentNode.className == "ground-hole") score += 0
 	else if (this.parentNode.classList == "ground-hole conehead-mole-appear") {
 		coneheadMoleHitCount++
-		if(coneheadMoleHitCount == 1){
+		if (coneheadMoleHitCount == 1) {
 			pop.play()
 			this.style.backgroundImage = "url(images/mole.png)"
 			this.style.backgroundSize = "60%"
 			this.style.backgroundRepeat = "no-repeat"
 		}
-		else if(coneheadMoleHitCount == 2){
+		else if (coneheadMoleHitCount == 2) {
 			score++
 			pop.play()
 			this.parentNode.classList.remove("conehead-mole-appear")
@@ -97,19 +97,19 @@ function hitBucketheadMole() {
 	if (this.parentNode.className == "ground-hole") score += 0
 	else if (this.parentNode.classList == "ground-hole buckethead-mole-appear") {
 		bucketheadMoleHitCount++
-		if(bucketheadMoleHitCount == 1) {
+		if (bucketheadMoleHitCount == 1) {
 			pop.play()
 			this.style.backgroundImage = "url(images/buckethead_mole_hit.png)"
 			this.style.backgroundSize = "50%"
 			this.style.backgroundRepeat = "no-repeat"
 		}
-		else if(bucketheadMoleHitCount == 2) {
+		else if (bucketheadMoleHitCount == 2) {
 			pop.play()
 			this.style.backgroundImage = "url(images/mole.png)"
 			this.style.backgroundSize = "60%"
 			this.style.backgroundRepeat = "no-repeat"
 		}
-		else if(bucketheadMoleHitCount == 3) {
+		else if (bucketheadMoleHitCount == 3) {
 			score++
 			pop.play()
 			this.parentNode.classList.remove("buckethead-mole-appear")
